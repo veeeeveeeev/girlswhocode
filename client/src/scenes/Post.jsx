@@ -7,7 +7,7 @@ import Other from "./widgets/Other";
 
 const Post = () => {
   const { id } = useParams();
-  const link = `http://localhost:3001/posts/${id}`;
+  const link = `https://girlswhocode.onrender.com/posts/${id}`;
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post);
 
@@ -24,7 +24,11 @@ const Post = () => {
 
   useEffect(() => {
     getPost();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [post]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div>

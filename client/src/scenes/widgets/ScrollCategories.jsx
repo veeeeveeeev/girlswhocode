@@ -45,8 +45,21 @@ const ScrollCategories = () => {
       <Slider className="min-[990px]:w-3/4" {...settings}>
         <div className="relative w-full md:min-w-[372px] md:min-h-[509px]">
           <Link
-            to="/articles/womeninstem"
+            to="/articles/general"
             className="absolute text-3xl top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2 text-white"
+          >
+            General
+          </Link>
+          <img
+            src={img1}
+            alt=""
+            className="md:min-w-[372px] min-h-[509px] mx-auto object-cover"
+          />
+        </div>
+        <div>
+          <Link
+            to="/articles/womeninstem"
+            className="absolute top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2 text-3xl text-white"
           >
             Women In Stem
           </Link>
@@ -56,7 +69,7 @@ const ScrollCategories = () => {
             className="md:min-w-[372px] min-h-[509px] mx-auto object-cover"
           />
         </div>
-        <div>
+        <div className="relative">
           <Link
             to="/articles/tutorials"
             className="absolute top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2 text-3xl text-white"
@@ -68,9 +81,6 @@ const ScrollCategories = () => {
             alt=""
             className="md:min-w-[372px] min-h-[509px] mx-auto object-cover"
           />
-        </div>
-        <div>
-          <img src={img1} alt="" className=" md:min-w-[372px] min-h-[509px] mx-auto object-cover" />
         </div>
       </Slider>
     </div>
