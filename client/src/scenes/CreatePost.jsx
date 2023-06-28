@@ -27,7 +27,7 @@ const CreatePost = () => {
       formData.append("picturePath", image.name);
     }
 
-    const response = await fetch(` http://localhost:3001/posts`, {
+    const response = await fetch(`https://girlswhocode.onrender.com/posts`, {
       method: "POST",
       body: formData,
     });

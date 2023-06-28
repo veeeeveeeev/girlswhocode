@@ -10,10 +10,16 @@ const Navbar = () => {
 
   return (
     <div className="py-4 px-9 bg-white flex flex-row justify-between text-black sticky top-0 z-[1000]">
-      <NavLink to="/" className={(navData) => navData.isActive && "logoColor"}>
+      <NavLink
+        to="/"
+        className={[
+          "z-[1000] absolute",
+          (navData) => navData.isActive && "logoColor",
+        ]}
+      >
         <img src={logo} alt="logo" className="w-[60.12px] h-[48.48px]" />
       </NavLink>
-      <div className="hidden md:flex md:flex-row gap-7 justify-between items-center text-2xl">
+      <div className="hidden md:flex md:flex-row gap-11 justify-between items-center text-2xl">
         <div className="flex flex-row items-end gap-0.5">
           <NavLink
             to="/articles"
@@ -45,7 +51,7 @@ const Navbar = () => {
               <div className="flex flex-col absolute right-0 top-10 p-4 w-56 gap-5 bg-white mt-1.5">
                 <NavLink
                   // reloadDocument
-                  to="/articles/general"
+                  to="/articles/General"
                   onClick={() => setArticles(!articles)}
                   className={(navData) => navData.isActive && "text-orange"}
                 >
@@ -53,7 +59,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   // reloadDocument
-                  to="/articles/womeninstem"
+                  to="/articles/Women In Stem"
                   onClick={() => setArticles(!articles)}
                   className={(navData) => navData.isActive && "text-orange"}
                 >
@@ -61,7 +67,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   // reloadDocument
-                  to="/articles/tutorials"
+                  to="/articles/Tutorials"
                   onClick={() => setArticles(!articles)}
                   className={(navData) => navData.isActive && "text-orange"}
                 >
@@ -122,7 +128,7 @@ const Navbar = () => {
               <div className="">
                 <NavLink
                   // reloadDocument
-                  to="/articles/general"
+                  to="/articles/General"
                   onClick={() => setMenuOpen(false)}
                   className={(navData) => navData.isActive && "text-orange"}
                 >
@@ -130,7 +136,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   // reloadDocument
-                  to="/articles/womeninstem"
+                  to="/articles/Women In Stem"
                   onClick={() => setMenuOpen(false)}
                   className={(navData) => navData.isActive && "text-orange"}
                 >
@@ -138,7 +144,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   // reloadDocument
-                  to="/articles/tutorials"
+                  to="/articles/Tutorials"
                   onClick={() => setMenuOpen(false)}
                   className={(navData) => navData.isActive && "text-orange"}
                 >

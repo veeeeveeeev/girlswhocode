@@ -26,7 +26,7 @@ const ScrollCategoriesPosts2 = ({ category }) => {
 
   useEffect(() => {
     getCategoryPosts2();
-  }, [categoryPosts2]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const settings = {
     arrows: false,
@@ -65,7 +65,7 @@ const ScrollCategoriesPosts2 = ({ category }) => {
           <div key={_id} className="relative w-[372px] h-[509px]">
             {picturePath && (
               <img
-                src={`http://localhost:3001/assets/${picturePath}`}
+                src={`https://girlswhocode.onrender.com/assets/${picturePath}`}
                 alt=""
                 className="mx-auto max-w-[372px] md:w-[372px] min-h-[509px] object-cover"
               />
@@ -80,7 +80,7 @@ const ScrollCategoriesPosts2 = ({ category }) => {
         ))}
       </Slider>
       <div className="min-[990px]:order-last order-first text-center md:text-left text-3xl sm:text-4xl md:text-5xl leading-tight text-green md:pl-10">
-        <Link to={`/articles/${name}`}>{category}</Link>
+        <Link to={`/articles/${category}`}>{category}</Link>
       </div>
     </div>
   );

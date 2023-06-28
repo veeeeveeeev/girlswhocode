@@ -32,16 +32,21 @@ const Post = () => {
 
   return (
     <div>
-      <div className="bg-grey py-10 px-20">
+      <div className="bg-grey py-10 px-10 md:px-20">
         <div>
-          <p className="text-7xl text-green">{post.title}</p>
-          <p className="text-2xl pb-24">
+          <p className="lg:text-7xl md:text-6xl text-5xl text-green">
+            {post.title}
+          </p>
+          <p className="text-2xl pt-6 pb-24">
             {new Date(post.createdAt).toLocaleString().split(",")[0]}
           </p>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div
+            className="leading-loose"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </div>
       </div>
-      <Other />
+      <Other postId={id} />
     </div>
   );
 };

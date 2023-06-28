@@ -26,7 +26,7 @@ const ScrollPosts = ({ text, subtext }) => {
 
   useEffect(() => {
     getPosts();
-  }, [posts]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const slider = useRef(null);
 
@@ -57,15 +57,15 @@ const ScrollPosts = ({ text, subtext }) => {
         {text}
         <span className="text-orange">{subtext}</span>
       </h2>
-      <div className="flex flex-row place-content-around items-start mx-auto px-4 md:px-7 lg:px-10 xl:px-12">
+      <div className="flex flex-row place-content-around items-start mx-auto px-4 min-[769px]:px-7 lg:px-10 xl:px-12">
         <button
-          className="pt-12 sm:pt-36"
+          className="pt-[30%] min-[769px]:pt-36"
           onClick={() => slider?.current?.slickPrev()}
         >
           <img src={arrowleft} alt="" />
         </button>
         <Slider
-          className="w-3/4 md:w-11/12 flex flex-row justify-items-center absolute"
+          className="w-3/4 min-[769px]:w-11/12 flex flex-row justify-items-center absolute"
           ref={slider}
           {...settings}
         >
@@ -74,16 +74,16 @@ const ScrollPosts = ({ text, subtext }) => {
               {picturePath && (
                 <img
                   alt="post"
-                  className="md:w-80 md:h-80  w-1/2 after:pb-[100%] mx-auto my-auto object-cover"
-                  src={`http://localhost:3001/assets/${picturePath}`}
+                  className="min-[769px]:w-80 min-[769px]:h-80 w-[90%] aspect-square mx-auto my-auto object-cover"
+                  src={`https://girlswhocode.onrender.com/assets/${picturePath}`}
                 />
               )}
-              <p className="text-3xl text-center p-10">{title}</p>
+              <p className="text-3xl text-center p-[10%]">{title}</p>
             </Link>
           ))}
         </Slider>
         <button
-          className="pt-12 sm:pt-36"
+          className="pt-[30%] min-[769px]:pt-36"
           onClick={() => slider?.current?.slickNext()}
         >
           <img src={arrowright} alt="" />

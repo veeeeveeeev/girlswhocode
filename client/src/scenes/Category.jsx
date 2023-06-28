@@ -7,9 +7,11 @@ import Header from "./widgets/Header";
 
 const Category = () => {
   const { category } = useParams();
-  const link = `https://girlswhocode.onrender.com/posts/post/${category}`;
   const dispatch = useDispatch();
   const categoryPosts = useSelector((state) => state.categoryPosts);
+  const link = `https://girlswhocode.onrender.com/posts/post/${category
+    .toLowerCase()
+    .replace(/ /g, "")}`;
 
   const getCategoryPosts = async () => {
     const response = await fetch(link, {
@@ -28,19 +30,20 @@ const Category = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
+  }, [category]);
+
   return (
     <div className="">
-      <Header title={categoryPosts[0].categoryName} />
+      <Header title={category} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 py-24 place-items-center">
         {categoryPosts.map(({ _id, title, picturePath, category }) => (
-          <div>
-            <Link to={`/articles/${category}/${_id}`} key={_id} className="">
+          <div key={_id}>
+            <Link to={`/articles/${category}/${_id}`}>
               {picturePath && (
                 <img
                   alt="post"
                   className="w-80 h-80 mx-auto object-cover"
-                  src={`http://localhost:3001/assets/${picturePath}`}
+                  src={`https://girlswhocode.onrender.com/assets/${picturePath}`}
                 />
               )}
               <p className="text-3xl text-center pt-10 px-14">{title}</p>

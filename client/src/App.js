@@ -18,12 +18,12 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/articles/:category" element={<Category />} />
           <Route path="/createpost" element={<CreatePost />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/articles/:category/:id" element={<Post />} />
-          <Route path="/articles/:category" element={<Category />} />
         </Routes>
         <Footer />
       </BrowserRouter>

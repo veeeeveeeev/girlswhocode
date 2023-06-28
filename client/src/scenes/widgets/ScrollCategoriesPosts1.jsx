@@ -26,7 +26,7 @@ const ScrollCategoriesPosts1 = ({ category }) => {
 
   useEffect(() => {
     getCategoryPosts();
-  }, [categoryPosts]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const settings = {
     arrows: false,
@@ -59,7 +59,7 @@ const ScrollCategoriesPosts1 = ({ category }) => {
   return (
     <div className="flex flex-col min-[990px]:flex-row px-7 py-20 gap-16 lg:gap-4">
       <div className="text-center md:text-left text-3xl sm:text-4xl md:text-5xl md:pl-10 leading-tight text-green">
-        <Link to={`/articles/${name}`}>{category}</Link>
+        <Link to={`/articles/${category}`}>{category}</Link>
       </div>
       <Slider className="min-[990px]:w-3/4" {...settings}>
         {categoryPosts.map(({ _id, title, picturePath, category }) => (
@@ -72,7 +72,7 @@ const ScrollCategoriesPosts1 = ({ category }) => {
             </Link>
             {picturePath && (
               <img
-                src={`http://localhost:3001/assets/${picturePath}`}
+                src={`https://girlswhocode.onrender.com/assets/${picturePath}`}
                 alt=""
                 className="mx-auto max-w-[372px] md:w-[372px] min-h-[509px] object-cover"
               />

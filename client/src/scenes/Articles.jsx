@@ -31,16 +31,18 @@ const Articles = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row justify-between min-[948px]:px-32 md:px-16 items-center gap-5 md:gap-0 pt-12 md:pt-0">
+      <div className="flex flex-col md:flex-row justify-between gap-5 items-center">
         <img
           alt="post"
-          className="object-cover w-1/2 after:pb-[100%]"
-          src={`http://localhost:3001/assets/${posts[0].picturePath}`}
+          className="md:w-1/2 md:h-1/2 object-cover aspect-square md:p-0 p-12 pt-0"
+          src={`https://girlswhocode.onrender.com/assets/${posts[0].picturePath}`}
         />
-        <div className="text-right md:w-1/2 md:order-last order-first">
+        <div className="text-center md:text-right md:w-1/2 md:order-last order-first lg:p-24 md:p-20 sm:px-32 px-12 py-12">
+          <p className="text-orange lg:text-4xl">New! </p>
           <Link
             to={`/articles/${posts[0].category}/${posts[0]._id}`}
-            className="md:pb-10 text-green text-4xl md:text-6xl lg:text-7xl"
+            // md:pb-10
+            className="text-green text-4xl md:text-5xl lg:text-6xl"
           >
             {posts[0].title}
           </Link>

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import womeninstem from "../../assets/womeninstem.png";
 import tutorials from "../../assets/tutorials.png";
 import img1 from "../../assets/img1.png";
-import { Link } from "react-router-dom";
+import SlideCategory from "./SlideCategory";
 
 const ScrollCategories = () => {
   const settings = {
@@ -18,22 +18,22 @@ const ScrollCategories = () => {
         breakpoint: 1330, // screen size where settings below will apply
         settings: {
           slidesToShow: 1.8,
-        }
+        },
       },
       {
         breakpoint: 1160, // screen size where settings below will apply
         settings: {
           slidesToShow: 1.5,
-        }
+        },
       },
       {
         breakpoint: 680, // screen size where settings below will apply
         settings: {
           slidesToShow: 1,
-          dots: true
-        }
-      }
-    ]
+          dots: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -43,45 +43,9 @@ const ScrollCategories = () => {
         <span className="text-green italic">categories.</span>
       </h1>
       <Slider className="min-[990px]:w-3/4" {...settings}>
-        <div className="relative w-full md:min-w-[372px] md:min-h-[509px]">
-          <Link
-            to="/articles/general"
-            className="absolute text-3xl top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2 text-white"
-          >
-            General
-          </Link>
-          <img
-            src={img1}
-            alt=""
-            className="md:min-w-[372px] min-h-[509px] mx-auto object-cover"
-          />
-        </div>
-        <div>
-          <Link
-            to="/articles/womeninstem"
-            className="absolute top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2 text-3xl text-white"
-          >
-            Women In Stem
-          </Link>
-          <img
-            src={womeninstem}
-            alt=""
-            className="md:min-w-[372px] min-h-[509px] mx-auto object-cover"
-          />
-        </div>
-        <div className="relative">
-          <Link
-            to="/articles/tutorials"
-            className="absolute top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2 text-3xl text-white"
-          >
-            Tutorials
-          </Link>
-          <img
-            src={tutorials}
-            alt=""
-            className="md:min-w-[372px] min-h-[509px] mx-auto object-cover"
-          />
-        </div>
+        <SlideCategory title="General" path={img1} />
+        <SlideCategory title="Women In Stem" path={womeninstem} />
+        <SlideCategory title="Tutorials" path={tutorials} />
       </Slider>
     </div>
   );
