@@ -15,21 +15,21 @@ const ScrollCategories = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1330, // screen size where settings below will apply
+        breakpoint: 1400, // screen size where settings below will apply
         settings: {
           slidesToShow: 1.8,
         },
       },
       {
-        breakpoint: 1160, // screen size where settings below will apply
+        breakpoint: 846, // screen size where settings below will apply
         settings: {
           slidesToShow: 1.5,
         },
       },
       {
-        breakpoint: 680, // screen size where settings below will apply
+        breakpoint: 660, // screen size where settings below will apply
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.0,
           dots: true,
         },
       },
@@ -37,15 +37,15 @@ const ScrollCategories = () => {
   };
 
   return (
-    <div className="flex flex-col min-[990px]:flex-row px-7 py-20 gap-16 lg:gap-4">
+    <div className="flex flex-col min-[990px]:flex-row px-7 md:py-20 pb-10 gap-16 lg:gap-5 overflow-hidden">
       <h1 className="text-center md:text-left text-3xl sm:text-4xl md:text-5xl md:pl-10 leading-tight">
         Find what you need by <br />
         <span className="text-green italic">categories.</span>
       </h1>
       <Slider className="min-[990px]:w-3/4" {...settings}>
-        <SlideCategory title="General" path={img1} />
-        <SlideCategory title="Women In Stem" path={womeninstem} />
-        <SlideCategory title="Tutorials" path={tutorials} />
+        <SlideCategory title="General" path={img1} fetch={false} />
+        <SlideCategory title="Women In Stem" path={womeninstem} fetch={false} />
+        <SlideCategory title="Tutorials" path={tutorials} fetch={false} />
       </Slider>
     </div>
   );

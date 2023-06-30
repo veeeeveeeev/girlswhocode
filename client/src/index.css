@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,13 +18,25 @@
 html,
 body,
 #root,
-.app{
-  margin:0;
-  padding:0;
+.app {
+  margin: 0;
+  padding: 0;
   height: 100%;
   width: 100%;
   font-family: "Plus Jakarta Sans", sans-serif;
 }
-.logoColor{
-  filter: invert(37%) sepia(52%) saturate(1322%) hue-rotate(346deg) brightness(90%) contrast(86%);
+.logoColor {
+  filter: invert(37%) sepia(52%) saturate(1322%) hue-rotate(346deg)
+    brightness(90%) contrast(86%);
+}
+/* .gradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(88, 129, 87, 1) 100%
+  );
+} */
+.myShadow {
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 1));
 }

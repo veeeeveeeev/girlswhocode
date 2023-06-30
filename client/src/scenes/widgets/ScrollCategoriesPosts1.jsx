@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,14 +6,17 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategoryPosts } from "state";
+import SlideCategory from "./SlideCategory";
 
 const ScrollCategoriesPosts1 = ({ category }) => {
   const name = category.toLowerCase().replace(/ /g, "");
   const dispatch = useDispatch();
   const categoryPosts = useSelector((state) => state.categoryPosts);
   const link = `https://girlswhocode.onrender.com/posts/post/${name}`;
+  const [loading, setLoading] = useState(false);
 
   const getCategoryPosts = async () => {
+    setLoading(true);
     const response = await fetch(link, {
       method: "GET",
       headers: {
@@ -22,6 +25,7 @@ const ScrollCategoriesPosts1 = ({ category }) => {
     });
     const data = await response.json();
     dispatch(setCategoryPosts({ categoryPosts: data }));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -35,21 +39,21 @@ const ScrollCategoriesPosts1 = ({ category }) => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1330, // screen size where settings below will apply
+        breakpoint: 1400, // screen size where settings below will apply
         settings: {
           slidesToShow: 1.8,
         },
       },
       {
-        breakpoint: 1160, // screen size where settings below will apply
+        breakpoint: 846, // screen size where settings below will apply
         settings: {
           slidesToShow: 1.5,
         },
       },
       {
-        breakpoint: 680, // screen size where settings below will apply
+        breakpoint: 660, // screen size where settings below will apply
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.0,
           dots: true,
         },
       },
@@ -57,27 +61,21 @@ const ScrollCategoriesPosts1 = ({ category }) => {
   };
 
   return (
-    <div className="flex flex-col min-[990px]:flex-row px-7 py-20 gap-16 lg:gap-4">
+    <div className="flex flex-col min-[990px]:flex-row px-7 md:py-20 pb-10 gap-16 lg:gap-5 overflow-hidden">
       <div className="text-center md:text-left text-3xl sm:text-4xl md:text-5xl md:pl-10 leading-tight text-green">
         <Link to={`/articles/${category}`}>{category}</Link>
       </div>
       <Slider className="min-[990px]:w-3/4" {...settings}>
         {categoryPosts.map(({ _id, title, picturePath, category }) => (
-          <div key={_id} className="relative w-[372px] h-[509px]">
-            <Link
-              to={`/articles/${category}/${_id}`}
-              className="text-3xl text-white absolute top-1/2 text-center transform -translate-x-1/2 -translate-y-1/2 left-1/2"
-            >
-              {title}
-            </Link>
-            {picturePath && (
-              <img
-                src={`https://girlswhocode.onrender.com/assets/${picturePath}`}
-                alt=""
-                className="mx-auto max-w-[372px] md:w-[372px] min-h-[509px] object-cover"
-              />
-            )}
-          </div>
+          <SlideCategory
+            key={_id}
+            title={title}
+            path={picturePath}
+            id={_id}
+            category={category}
+            fetch
+            loading={loading}
+          />
         ))}
       </Slider>
     </div>

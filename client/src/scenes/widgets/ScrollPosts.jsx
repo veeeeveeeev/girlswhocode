@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,12 +8,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import { Link } from "react-router-dom";
+import { Skeleton } from "@mui/material";
 
 const ScrollPosts = ({ text, subtext }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
 
   const getPosts = async () => {
+    setLoading(true);
     const response = await fetch("https://girlswhocode.onrender.com/posts/", {
       method: "GET",
       headers: {
@@ -22,6 +25,7 @@ const ScrollPosts = ({ text, subtext }) => {
     });
     const data = await response.json();
     dispatch(setPosts({ posts: data }));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -65,13 +69,21 @@ const ScrollPosts = ({ text, subtext }) => {
           <img src={arrowleft} alt="" />
         </button>
         <Slider
-          className="w-3/4 min-[769px]:w-11/12 flex flex-row justify-items-center absolute"
+          className="w-3/4 min-[769px]:w-11/12 h-auto flex flex-row justify-items-center absolute"
           ref={slider}
           {...settings}
         >
           {posts.map(({ _id, title, picturePath, category }) => (
             <Link to={`/articles/${category}/${_id}`} key={_id}>
-              {picturePath && (
+              {loading ? (
+                <Skeleton variant="rectangular">
+                  <img
+                    alt="post"
+                    className="min-[769px]:w-80 min-[769px]:h-80 w-[90%] aspect-square mx-auto my-auto object-cover"
+                    src={`https://girlswhocode.onrender.com/assets/${picturePath}`}
+                  />
+                </Skeleton>
+              ) : (
                 <img
                   alt="post"
                   className="min-[769px]:w-80 min-[769px]:h-80 w-[90%] aspect-square mx-auto my-auto object-cover"
